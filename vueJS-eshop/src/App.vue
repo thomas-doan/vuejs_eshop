@@ -17,7 +17,10 @@
 import { computed, ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 
+//ref permet de la réactivité uniquement sur des primitives
 const input = ref("");
+
+//computed permet d'actualiser
 const inputOnGoing = computed(() => input.value.length);
 </script>
 
