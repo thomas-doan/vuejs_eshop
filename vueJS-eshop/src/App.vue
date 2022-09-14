@@ -7,8 +7,12 @@
 
         //synthaxe plus rapide
         inputError,
+        inputValid,
       }"
-      @focus="focus = true"
+      @focus="
+        focus = true;
+        touched = true;
+      "
       @blur="focus = false"
       type="text"
       v-model="input"
@@ -28,10 +32,18 @@ const input = ref("");
 //permet d'écouter le focus ou pas et en fonction assigné une nouvelle classe
 const focus = ref(false);
 
+const Valid = ref(false);
+
+const touched = ref(false);
+
 //computed permet d'actualiser
 const inputOnGoing = computed(() => focus.value && input.value.length);
 
-const inputError = computed(() => input.value.length > 6);
+const inputValid = computed(() => !inputError.value && !focus.value);
+
+const inputError = computed(
+  () => !focus.value && touched.value && input.value.length < 6
+);
 </script>
 
 <style scoped>
@@ -47,5 +59,9 @@ const inputError = computed(() => input.value.length > 6);
 
 .inputError {
   border-color: red;
+}
+
+.inputValid {
+  border-color: green;
 }
 </style>
