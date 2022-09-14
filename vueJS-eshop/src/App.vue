@@ -1,34 +1,25 @@
 <template>
-  <header>
-    <input
-      class="input"
-      :class="{
-        inputOnGoing: inputOnGoing,
-      }"
-      type="text"
-      v-model="input"
-    />
-  </header>
+  <h2>form</h2>
+  <input ref="input" type="text" placeholder="Nom" />
 
+  <ul>
+    <li ref="fruitsRef" v-for="fruit of arr" :key="fruit">{{ fruit }}</li>
+  </ul>
   <RouterView />
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 
-const input = ref("");
-const inputOnGoing = computed(() => input.value.length);
+const input = ref<HTMLInputElement | null>(null);
+const arr = reactive(["pomme", "poire", "orange"]);
+const fruitsRef = ref<HTMLInputElement[] | []>([]);
+
+onMounted(() => {
+  input.value?.focus();
+  console.log(fruitsRef.value);
+});
 </script>
 
-<style scoped>
-.input {
-  outline: 0;
-  border: 1px solid black;
-  border-radius: 4px;
-}
-
-.inputOnGoing {
-  border-color: blue;
-}
-</style>
+<style scoped></style>
