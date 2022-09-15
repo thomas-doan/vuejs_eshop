@@ -19,6 +19,8 @@ const fruitsRef = ref<HTMLInputElement[] | []>([]);
 onMounted(() => {
   input.value?.focus();
   console.log(fruitsRef.value);
+  console.log(fruitsRef.value[0].textContent);
+  fruitsRef.value.forEach((textContent) => console.log(textContent));
 });
 </script>
 
