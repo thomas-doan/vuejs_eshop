@@ -1,5 +1,5 @@
+// eslint-disable-next-line vue/multi-word-component-names
 <template>
-  <RouterView />
   <div>
     <Header>
       <h1>Header</h1>
@@ -7,8 +7,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped></style>
